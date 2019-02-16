@@ -1,19 +1,29 @@
 var inquirer = require('inquirer');
-var mysql = require('mysql');
 const cTable = require('console.table');
+const con = require('./connection');
 
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "bamazon"
-  });
   
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
    startBamazon();
   });
+
+// const questions = [{
+//         type: 'List',
+//         name: 'command',
+//         messages: 'List a set of menu options',
+//         choices: [
+//             'View products for Sale',
+//             'Quit'
+//         ]
+// }];
+
+// inquirer.prompt(questions)
+//     .then(function (data) {
+//         console.log('Data: ', data);
+//     });
+
 
 
 function startBamazon(){
@@ -25,6 +35,8 @@ function startBamazon(){
 
      
         console.table(results);
+
+        
         inquirer
           .prompt([
            {
@@ -57,6 +69,7 @@ function processOrder(answers) {
             console.log("Sorry not enough in stock")
         }else {
             // update data base with new quantity
+
         }
 
     })
