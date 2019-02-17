@@ -162,8 +162,9 @@ figlet('Welcome to BAMAZON', function(err, data) {
                 ],
                 function (err, res) {
                     if (err) throw err;
-                    startBamazon();
+                    con.end();
                 })
         }
         )
     }
+    
